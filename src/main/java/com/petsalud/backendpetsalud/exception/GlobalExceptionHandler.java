@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestControllerAdvice
-@AllArgsConstructor 
+@AllArgsConstructor
 public class GlobalExceptionHandler {
 
     private final SuspiciousActivityService monitoreo;
@@ -83,6 +83,18 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status)
                 .body(new RespuestaError(status.value(), mensaje, req.getRequestURI(), LocalDateTime.now()));
     }
+
+    @ExceptionHandler (RecursoNoEncontradoException.class)
+        public ResponseEntity<RespuestaError> manejarNoEncotrado(RecursoNoEncontradoException ex, HttpServletRequest req){
+            return respuesta(HttpStatus.NOT_FOUND, ex.getMessage(), req);
+        }
+    
+
+    @ExceptionHandler (ConflictoException.class)
+        public ResponseEntity<RespuestaError> manejarConflicto(ConflictoException ex, HttpServletRequest req){
+            return respuesta(HttpStatus.CONFLICT, ex.getMessage(), req);
+        }
+    
 
    
 }
