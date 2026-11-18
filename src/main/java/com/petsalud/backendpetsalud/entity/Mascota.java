@@ -24,10 +24,13 @@ public class Mascota {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank (message = "El nombre de la mascota es obligatorio")
     private String nombre;
 
+    @NotBlank (message = "La especie de la mascota es obligatoria")
     private String especie;
 
+    @NotBlank 
     private String raza;
 
     private LocalDate fechaNacimiento;
