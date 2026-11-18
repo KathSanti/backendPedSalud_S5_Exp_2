@@ -1,6 +1,7 @@
 package com.petsalud.backendpetsalud.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,6 +37,7 @@ public class Mascota {
     // Relaciones
     @ManyToOne
     @JoinColumn(name = "usuario_id")
+    @NotBlank (message = "El nombre del propietario es obligatorio")
     private Usuario propietario;
 
     @JsonIgnore
