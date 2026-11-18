@@ -1,6 +1,7 @@
 package com.petsalud.backendpetsalud.controller;
 
 import com.petsalud.backendpetsalud.entity.Cita;
+import com.petsalud.backendpetsalud.entity.EstadoCita;
 import com.petsalud.backendpetsalud.service.CitaService;
 
 import lombok.AllArgsConstructor;
@@ -41,8 +42,7 @@ public class CitaController {
 
     @PreAuthorize("hasAnyRole('EMPLEADO','GERENTE')")
     @PutMapping("/{id}/estado")
-    public ResponseEntity<Cita> actualizarEstadoCita(@PathVariable Long id, @RequestParam String estado) {
-        Cita citaActualizada = citaService.actualizarEstadoCita(id, estado);
+    public ResponseEntity<Cita> actualizarEstadoCita(@PathVariable Long id, @RequestParam EstadoCita estado) {        Cita citaActualizada = citaService.actualizarEstadoCita(id, estado);
         return ResponseEntity.ok(citaActualizada);
     }
 
