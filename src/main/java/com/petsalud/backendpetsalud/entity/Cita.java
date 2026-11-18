@@ -23,7 +23,8 @@ public class Cita {
 
     private LocalDateTime fechaHora;
 
-    private String estado; // Ejemplos: "Agendada", "Cancelada", "Completada"
+    @Enumerated (EnumType.STRING)
+    private EstadoCita estado; // Estados de cita desde enumerados 
 
     private String motivo;
 
